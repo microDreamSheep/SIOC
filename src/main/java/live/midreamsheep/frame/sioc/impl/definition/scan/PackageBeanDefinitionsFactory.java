@@ -1,4 +1,4 @@
-package live.midreamsheep.frame.sioc.impl.standard.definition;
+package live.midreamsheep.frame.sioc.impl.definition.scan;
 
 import live.midreamsheep.frame.sioc.api.meta.definition.BeanDefinitionsFactory;
 import live.midreamsheep.frame.sioc.api.scanner.ClassParserToDefinition;

@@ -2,6 +2,7 @@ package live.midreamsheep.frame.sioc.entity.bean;
 
 import live.midreamsheep.frame.sioc.api.meta.handle.BeanHandler;
 import live.midreamsheep.frame.sioc.entity.bean.meta.Scope;
+import live.midreamsheep.frame.sioc.impl.definition.scan.parse.clazz.ClassMetaDefinition;
 
 import java.util.List;
 
@@ -23,6 +24,14 @@ public interface BeanDefinition {
      * */
     void setBeanName(String name);
     String getBeanName();
+
+
+    ClassMetaDefinition getClassDefinition();
+
+    void initAnnotationInfo();
+    void initFieldAnnotationInfo();
+    void initMethodAnnotationInfo();
+
 
     /**
      * 新增对象处理器

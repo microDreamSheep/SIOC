@@ -8,7 +8,7 @@ import lombok.Getter;
 public class A {
     @Injector
     @Getter
-    private B b;
+    private BInter b;
 
     @Getter
     private String name = "hello world---A";

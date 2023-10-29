@@ -1,4 +1,4 @@
-package live.midreamsheep.frame.sioc.impl.standard.definition.scanner;
+package live.midreamsheep.frame.sioc.impl.definition.scan.scanner;
 
 import live.midreamsheep.frame.sioc.api.scanner.ClassesAbstractScanner;
 import lombok.AllArgsConstructor;

@@ -4,8 +4,8 @@ import live.midreamsheep.frame.sioc.api.annotation.injector.Comment;
 import live.midreamsheep.frame.sioc.api.annotation.injector.Injector;
 import lombok.Getter;
 
-@Comment
-public class B {
+@Service
+public class B implements BInter {
     @Getter
     private String name = "hello world";
 

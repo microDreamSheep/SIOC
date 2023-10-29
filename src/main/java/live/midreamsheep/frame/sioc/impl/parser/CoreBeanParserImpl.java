@@ -1,4 +1,4 @@
-package live.midreamsheep.frame.sioc.impl.standard.parser;
+package live.midreamsheep.frame.sioc.impl.parser;
 
 import live.midreamsheep.frame.sioc.api.meta.ApplicationContext;
 import live.midreamsheep.frame.sioc.api.meta.handle.BeanHandler;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-public class StandardBeanParserImpl implements BeanDependenciesInjector {
+public class CoreBeanParserImpl implements BeanDependenciesInjector {
     @Override
     public ApplicationContext parse(ApplicationContext context, Set<BeanDefinition> beanDefinitions) {
         //用于存储注入失败的处理器
