@@ -26,11 +26,8 @@ public interface BeanDefinition {
     String getBeanName();
 
 
-    ClassMetaDefinition getClassDefinition();
-
-    void initAnnotationInfo();
-    void initFieldAnnotationInfo();
-    void initMethodAnnotationInfo();
+    ClassMetaDefinition getClassMetaDefinition();
+    void setClassMetaDefinition(ClassMetaDefinition classDefinition);
 
 
     /**

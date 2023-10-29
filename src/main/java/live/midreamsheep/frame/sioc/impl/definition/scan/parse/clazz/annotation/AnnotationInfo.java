@@ -12,7 +12,7 @@ import java.util.Map;
 @SuppressWarnings("unchecked")
 public class AnnotationInfo {
 
-    private final Map<Class<?>,Object> annotations = new HashMap<>();
+    private final Map<Class<?>,Annotation> annotations = new HashMap<>();
 
     public <T> T getAnnotation(Class<T> clazz){
         return annotations.containsKey(clazz) ? (T) annotations.get(clazz) : null;
@@ -31,10 +31,17 @@ public class AnnotationInfo {
     }
 
     public void init(Class<?> clazz){
-        for (Annotation allAnnotation : getAllAnnotations(clazz)) {
-            addAnnotation(allAnnotation);
-        }
+        init(clazz.getAnnotations());
+    }
 
+    public void init(Annotation[] annotations){
+        for (Annotation annotation : annotations) {
+            getAllAnnotations(annotation.annotationType()).forEach(this::addAnnotation);
+            if (annotation.annotationType().getName().startsWith("java.lang.annotation")){
+                continue;
+            }
+            addAnnotation(annotation);
+        }
     }
 
     private List<Annotation> getAllAnnotations(Class<?> clazz){

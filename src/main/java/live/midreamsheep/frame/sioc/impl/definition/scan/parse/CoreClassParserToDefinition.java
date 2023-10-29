@@ -3,16 +3,17 @@ package live.midreamsheep.frame.sioc.impl.definition.scan.parse;
 import live.midreamsheep.frame.sioc.api.annotation.injector.BeanScope;
 import live.midreamsheep.frame.sioc.api.annotation.injector.Comment;
 import live.midreamsheep.frame.sioc.api.annotation.injector.Injector;
+import live.midreamsheep.frame.sioc.api.annotation.injector.IocTag;
 import live.midreamsheep.frame.sioc.api.meta.handle.di.injector.FieldDependenceInjector;
 import live.midreamsheep.frame.sioc.api.scanner.ClassParserToDefinition;
 import live.midreamsheep.frame.sioc.entity.bean.BeanDefinition;
-import live.midreamsheep.frame.sioc.entity.bean.impl.StandardBeanDefinition;
+import live.midreamsheep.frame.sioc.entity.bean.impl.CoreBeanDefinition;
 import live.midreamsheep.frame.sioc.entity.bean.meta.InjectType;
 import live.midreamsheep.frame.sioc.impl.definition.scan.parse.clazz.ClassMetaDefinition;
+import live.midreamsheep.frame.sioc.impl.definition.scan.parse.clazz.ClassMetaDefinitionImpl;
 import live.midreamsheep.frame.sioc.impl.definition.scan.parse.clazz.annotation.AnnotationInfo;
 import live.midreamsheep.frame.sioc.util.StringUtil;
 
-import java.lang.instrument.ClassDefinition;
 import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,23 +32,27 @@ public class CoreClassParserToDefinition implements ClassParserToDefinition {
     }
 
     private BeanDefinition parse(Class<?> aClass) {
-        BeanDefinition beanDefinition = new StandardBeanDefinition(aClass);
-        beanDefinition.initAnnotationInfo();
-
-        ClassMetaDefinition classDefinition = beanDefinition.getClassDefinition();
-        AnnotationInfo annotationInfo = classDefinition.getAnnotationInfo();
+        //创建ClassDefinition
+        ClassMetaDefinition classDefinition = new ClassMetaDefinitionImpl(aClass);
 
         //将类上的注解进行解层
-        Comment comment = annotationInfo.getAnnotation(Comment.class);
-        //判断aClass是否是普通类而非接口或者抽象类 TODO
-        if(comment ==null){
+        AnnotationInfo annotationInfo = classDefinition.getAnnotationInfo();
+        classDefinition.initAnnotationInfo();
+
+        //判断是否被容器标记处理
+        IocTag tag = annotationInfo.getAnnotation(IocTag.class);
+        if(tag ==null){
             return null;
         }
+        //对方法和字段进行分析
+        classDefinition.initFieldInfo();
+        classDefinition.initMethodInfo();
 
+
+        //TODO 以下为测试代码
+        BeanDefinition beanDefinition = new CoreBeanDefinition(aClass);
+        Comment comment = annotationInfo.getAnnotation(Comment.class);
         beanDefinition.setBeanName(comment.value().isEmpty()? StringUtil.firstCharToLowerCase(aClass.getSimpleName()): comment.value());
-        beanDefinition.initFieldAnnotationInfo();
-        beanDefinition.initMethodAnnotationInfo();
-
         BeanScope scope = annotationInfo.getAnnotation(BeanScope.class);
         if (scope != null) {
             beanDefinition.setScope(scope.value());

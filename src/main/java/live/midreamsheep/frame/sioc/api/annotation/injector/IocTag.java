@@ -6,14 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 用于标记将要注入的bean
+ * 用于标记class将被容器处理
  * */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@IocTag
-public @interface Comment {
-    /**
-     * bean的名称
-     * */
-    String value() default "";
+public @interface IocTag {
 }

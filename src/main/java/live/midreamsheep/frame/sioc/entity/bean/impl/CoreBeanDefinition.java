@@ -11,14 +11,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Data
-public class StandardBeanDefinition implements BeanDefinition {
+public class CoreBeanDefinition implements BeanDefinition {
 
     private Class<?> beanClass;
     private String beanName;
     private List<BeanHandler> dependenceInjectors = new LinkedList<>();
     private ClassMetaDefinition classMetaDefinition;
 
-    public StandardBeanDefinition(Class<?> beanClass) {
+    public CoreBeanDefinition(Class<?> beanClass) {
         this.beanClass = beanClass;
         this.classMetaDefinition = new ClassMetaDefinitionImpl(beanClass);
     }
@@ -35,25 +35,7 @@ public class StandardBeanDefinition implements BeanDefinition {
         return Scope.SINGLETON;
     }
 
-    @Override
-    public ClassMetaDefinition getClassDefinition() {
-        return this.classMetaDefinition;
-    }
 
-    @Override
-    public void initAnnotationInfo() {
-        classMetaDefinition.getAnnotationInfo().init(beanClass);
-    }
-
-    @Override
-    public void initFieldAnnotationInfo() {
-
-    }
-
-    @Override
-    public void initMethodAnnotationInfo() {
-
-    }
 
     @Override
     public void addBeanHandler(BeanHandler injector) {
