@@ -1,9 +1,8 @@
-package live.midreamsheep.frame.sioc;
+package live.midreamsheep.frame.sioc.api.builder.application;
 
-import live.midreamsheep.frame.sioc.api.meta.ApplicationContext;
-import live.midreamsheep.frame.sioc.api.meta.definition.BeanDefinitionsFactory;
-import live.midreamsheep.frame.sioc.api.meta.parser.BeanDependenciesInjector;
-import live.midreamsheep.frame.sioc.entity.bean.BeanDefinition;
+import live.midreamsheep.frame.sioc.api.builder.bean.BeanDefinitionsFactory;
+import live.midreamsheep.frame.sioc.api.builder.injector.BeanDependenciesInjector;
+import live.midreamsheep.frame.sioc.api.context.application.ApplicationContext;
 import lombok.Data;
 
 import java.util.Set;
@@ -12,7 +11,7 @@ import java.util.Set;
 @Data
 public class ApplicationContextBuilder {
     /**
-     * 用于获取bean
+     * 用于获取的handle
      * */
     private BeanDefinitionsFactory classDefinitionsBuilder;
     /**
@@ -28,6 +27,6 @@ public class ApplicationContextBuilder {
         //获取类定义
         Set<BeanDefinition> beanDefinitions = classDefinitionsBuilder.getBeanDefinitions();
         //交由applicationContext注册
-        return definitionParser.parse(applicationContext, beanDefinitions);
+        return definitionParser.inject(applicationContext, beanDefinitions);
     }
 }

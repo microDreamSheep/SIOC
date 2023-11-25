@@ -1,4 +1,6 @@
-package live.midreamsheep.frame.sioc.api.meta;
+package live.midreamsheep.frame.sioc.api.context.application;
+
+import live.midreamsheep.frame.sioc.api.bean.Bean;
 
 public interface ApplicationContext {
     /**
@@ -15,7 +17,11 @@ public interface ApplicationContext {
     /**
      * 注册bean
      * */
-    void registerBean(String name, Object bean);
+    void registerBean(String name, Bean bean);
+    /**
+     * 注册bean
+     * */
+    void registerBean(String name,Object object);
     /**
      * 注销bean
      * */
