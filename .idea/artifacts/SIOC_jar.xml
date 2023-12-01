@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="SIOC:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/SIOC_jar</output-path>
-    <root id="archive" name="SIOC.jar">
-      <element id="module-output" name="SIOC" />
-    </root>
-  </artifact>
-</component>

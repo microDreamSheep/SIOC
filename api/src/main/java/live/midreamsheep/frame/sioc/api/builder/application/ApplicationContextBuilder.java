@@ -3,11 +3,8 @@ package live.midreamsheep.frame.sioc.api.builder.application;
 import live.midreamsheep.frame.sioc.api.builder.bean.BeanHandlerFactory;
 import live.midreamsheep.frame.sioc.api.builder.injector.BeanHandlerInjector;
 import live.midreamsheep.frame.sioc.api.context.application.ApplicationContext;
-import live.midreamsheep.frame.sioc.api.handle.ContextHandler;
 import live.midreamsheep.frame.sioc.api.handle.HandlerManager;
 import lombok.Data;
-
-import java.util.Set;
 
 
 @Data
