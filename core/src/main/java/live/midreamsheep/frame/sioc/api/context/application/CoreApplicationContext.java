@@ -7,6 +7,9 @@ import lombok.Data;
 
 import java.util.*;
 
+/**
+ * 核心上下文，用于存储bean
+ * */
 @SuppressWarnings("unchecked")
 public class CoreApplicationContext implements ApplicationContext{
 
