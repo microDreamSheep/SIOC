@@ -1,8 +1,8 @@
-package live.midreamsheep.frame.sioc.scan.parse.clazz;
+package live.midreamsheep.frame.sioc.scan.clazz;
 
-import live.midreamsheep.frame.sioc.scan.parse.clazz.annotation.AnnotationInfo;
-import live.midreamsheep.frame.sioc.scan.parse.clazz.field.FieldInfo;
-import live.midreamsheep.frame.sioc.scan.parse.clazz.method.MethodInfo;
+import live.midreamsheep.frame.sioc.scan.clazz.annotation.AnnotationInfo;
+import live.midreamsheep.frame.sioc.scan.clazz.field.FieldInfo;
+import live.midreamsheep.frame.sioc.scan.clazz.method.MethodInfo;
 import lombok.Data;
 
 @Data
@@ -33,5 +33,10 @@ public class ClassMetaDefinitionImpl implements ClassMetaDefinition{
     @Override
     public void initFieldInfo() {
 
+    }
+
+    @Override
+    public Class<?> getOwnClass() {
+        return aClass;
     }
 }

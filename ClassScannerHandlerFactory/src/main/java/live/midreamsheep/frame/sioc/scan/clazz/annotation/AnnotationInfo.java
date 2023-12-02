@@ -1,4 +1,4 @@
-package live.midreamsheep.frame.sioc.scan.parse.clazz.annotation;
+package live.midreamsheep.frame.sioc.scan.clazz.annotation;
 
 import lombok.Getter;
 

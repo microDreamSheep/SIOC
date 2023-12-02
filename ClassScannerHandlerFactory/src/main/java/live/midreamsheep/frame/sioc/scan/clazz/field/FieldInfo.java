@@ -1,6 +1,6 @@
-package live.midreamsheep.frame.sioc.scan.parse.clazz.field;
+package live.midreamsheep.frame.sioc.scan.clazz.field;
 
-import live.midreamsheep.frame.sioc.scan.parse.clazz.field.field.NormalField;
+import live.midreamsheep.frame.sioc.scan.clazz.field.field.NormalField;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

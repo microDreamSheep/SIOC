@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HandlerManager {
+public class HandlerSet {
     private ContextHandler[] contextHandlers;
 }

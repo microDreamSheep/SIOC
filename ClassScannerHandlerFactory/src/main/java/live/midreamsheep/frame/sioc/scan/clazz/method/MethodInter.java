@@ -1,6 +1,6 @@
-package live.midreamsheep.frame.sioc.scan.parse.clazz.method;
+package live.midreamsheep.frame.sioc.scan.clazz.method;
 
-import live.midreamsheep.frame.sioc.scan.parse.clazz.annotation.AnnotationInfo;
+import live.midreamsheep.frame.sioc.scan.clazz.annotation.AnnotationInfo;
 
 
 public interface MethodInter {

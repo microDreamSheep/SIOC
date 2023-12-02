@@ -1,7 +1,7 @@
-package live.midreamsheep.frame.sioc.scan.parse.clazz.field.field;
+package live.midreamsheep.frame.sioc.scan.clazz.field.field;
 
-import live.midreamsheep.frame.sioc.scan.parse.clazz.annotation.AnnotationInfo;
-import live.midreamsheep.frame.sioc.scan.parse.clazz.field.FieldInter;
+import live.midreamsheep.frame.sioc.scan.clazz.annotation.AnnotationInfo;
+import live.midreamsheep.frame.sioc.scan.clazz.field.FieldInter;
 import lombok.Data;
 
 import java.lang.reflect.Field;

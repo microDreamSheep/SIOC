@@ -1,11 +1,10 @@
-package live.midreamsheep.frame.sioc.scan.parse.clazz.method.method;
+package live.midreamsheep.frame.sioc.scan.clazz.method.method;
 
-import live.midreamsheep.frame.sioc.scan.parse.clazz.annotation.AnnotationInfo;
-import live.midreamsheep.frame.sioc.scan.parse.clazz.method.MethodInter;
+import live.midreamsheep.frame.sioc.scan.clazz.annotation.AnnotationInfo;
+import live.midreamsheep.frame.sioc.scan.clazz.method.MethodInter;
 import lombok.Data;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 
 @Data
 public class ConstructorMethodInfo implements MethodInter {

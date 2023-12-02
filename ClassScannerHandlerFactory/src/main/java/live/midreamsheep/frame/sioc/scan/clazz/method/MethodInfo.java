@@ -1,7 +1,7 @@
-package live.midreamsheep.frame.sioc.scan.parse.clazz.method;
+package live.midreamsheep.frame.sioc.scan.clazz.method;
 
-import live.midreamsheep.frame.sioc.scan.parse.clazz.method.method.ConstructorMethodInfo;
-import live.midreamsheep.frame.sioc.scan.parse.clazz.method.method.NormalMethodInfo;
+import live.midreamsheep.frame.sioc.scan.clazz.method.method.ConstructorMethodInfo;
+import live.midreamsheep.frame.sioc.scan.clazz.method.method.NormalMethodInfo;
 import lombok.Getter;
 
 import java.lang.reflect.Constructor;

@@ -1,6 +1,6 @@
 package live.midreamsheep.frame.sioc.scan.inter;
 
-import live.midreamsheep.frame.sioc.api.handle.HandlerManager;
+import live.midreamsheep.frame.sioc.api.handle.HandlerSet;
 
 import java.util.Set;
 
@@ -14,6 +14,6 @@ public interface ClassParserToDefinition {
      * @param classes 需要解析的class
      * @return bean定义
      * */
-    HandlerManager parse(Set<Class<?>> classes);
+    HandlerSet parse(Set<Class<?>> classes);
 
 }

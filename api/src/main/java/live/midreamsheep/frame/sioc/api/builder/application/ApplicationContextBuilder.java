@@ -3,7 +3,7 @@ package live.midreamsheep.frame.sioc.api.builder.application;
 import live.midreamsheep.frame.sioc.api.builder.bean.BeanHandlerFactory;
 import live.midreamsheep.frame.sioc.api.builder.injector.BeanHandlerInjector;
 import live.midreamsheep.frame.sioc.api.context.application.ApplicationContext;
-import live.midreamsheep.frame.sioc.api.handle.HandlerManager;
+import live.midreamsheep.frame.sioc.api.handle.HandlerSet;
 import lombok.Data;
 
 
@@ -24,7 +24,7 @@ public class ApplicationContextBuilder {
 
     public ApplicationContext build() {
         //获取类定义
-        HandlerManager handlerManager = classbeanHandlerFactory.generateHandlerManager();
+        HandlerSet handlerManager = classbeanHandlerFactory.generateHandlerManager();
         //交由applicationContext注册
         return beanHandlerInjector.inject(applicationContext, handlerManager);
     }
