@@ -19,5 +19,10 @@ public interface ContextHandler {
      * TODO
      * */
     void handle(ApplicationContext context);
+    /**
+     * 获取handler的处理level
+     * {@link HandlerLevel}
+     * */
+    HandlerLevel getHandlerLevel();
     
 }

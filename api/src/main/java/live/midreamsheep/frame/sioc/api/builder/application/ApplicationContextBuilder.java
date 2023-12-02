@@ -1,5 +1,7 @@
 package live.midreamsheep.frame.sioc.api.builder.application;
 
+import live.midreamsheep.frame.sioc.api.builder.application.sort.DependenciesSorter;
+import live.midreamsheep.frame.sioc.api.builder.application.sort.core.CoreDependenciesSorter;
 import live.midreamsheep.frame.sioc.api.builder.bean.BeanHandlerFactory;
 import live.midreamsheep.frame.sioc.api.builder.injector.BeanHandlerInjector;
 import live.midreamsheep.frame.sioc.api.context.application.ApplicationContext;
@@ -22,10 +24,15 @@ public class ApplicationContextBuilder {
      * */
     private BeanHandlerInjector beanHandlerInjector;
 
+    /**
+     * 策略设计模式，用于处理依赖关系
+     * */
+    private DependenciesSorter dependenciesSorter = new CoreDependenciesSorter();
+
     public ApplicationContext build() {
         //获取类定义
         HandlerSet handlerManager = classbeanHandlerFactory.generateHandlerManager();
         //交由applicationContext注册
-        return beanHandlerInjector.inject(applicationContext, handlerManager);
+        return beanHandlerInjector.inject(applicationContext, dependenciesSorter.sort(handlerManager));
     }
 }

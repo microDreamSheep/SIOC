@@ -21,5 +21,10 @@ public abstract class AbstractContextHandler implements ContextHandler{
     }
 
     @Override
+    public HandlerLevel getHandlerLevel() {
+        return HandlerLevel.GENERATE;
+    }
+
+    @Override
     public abstract void handle(ApplicationContext context);
 }
