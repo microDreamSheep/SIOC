@@ -30,7 +30,8 @@ public class FieldInfo {
 
     private List<FieldInter> getFields(Class<?> aClass){
         List<FieldInter> fieldInterList = new ArrayList<>();
-        for (Field field : aClass.getFields()) {
+        //获取所有字段
+        for (Field field : aClass.getDeclaredFields()) {
             fieldInterList.add(new NormalField(field));
         }
         return fieldInterList;

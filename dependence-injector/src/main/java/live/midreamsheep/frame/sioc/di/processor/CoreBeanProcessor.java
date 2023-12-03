@@ -14,7 +14,6 @@ import live.midreamsheep.frame.sioc.scan.clazz.method.MethodInter;
 import live.midreamsheep.frame.sioc.scan.processor.HandlerProcessor;
 import live.midreamsheep.frame.sioc.scan.processor.core.register.HandlerRegister;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 

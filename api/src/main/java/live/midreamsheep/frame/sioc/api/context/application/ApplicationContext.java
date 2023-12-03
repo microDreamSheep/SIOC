@@ -15,6 +15,11 @@ public interface ApplicationContext {
     <T> T getBean(String name,Class<T> clazz);
 
     /**
+     * 通过bean id获取bean
+     * */
+    Object getBean(long id);
+
+    /**
      * 注册bean
      * */
     void registerBean(String name, Bean bean);

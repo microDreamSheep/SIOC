@@ -20,9 +20,15 @@ public class CoreApplicationContext implements ApplicationContext{
 
     private final Map<Class<?>,LevelClass> beanClassMapper = new HashMap<>();
 
+    public CoreApplicationContext(BeanFactory beanFactory, int level) {
+        this.factory = beanFactory;
+        this.level = level;
+
+    }
+
     @Override
     public <T> T getBean(Class<T> clazz) {
-        return (T) factory.getBean(beanClassMapper.get(clazz).getId());
+        return (T) factory.getBean(beanClassMapper.get(clazz).getId()).getObject();
     }
 
     @Override
@@ -31,17 +37,25 @@ public class CoreApplicationContext implements ApplicationContext{
     }
 
     @Override
+    public Object getBean(long id) {
+        return factory.getBean(id).getObject();
+    }
+
+    @Override
     public void registerBean(String name, Bean bean) {
         factory.registerBean(bean);
         beanNameMapper.put(name,bean.getBeanMetaData().getId());
         //解析到指定的父类
         List<LevelClass> allLevelClass = getAllLevelClass(bean.getBeanMetaData().getAClass(), 0);
-        allLevelClass.forEach((aLevelClass)->{
-            if(beanClassMapper.get(aLevelClass.getAClass()).getLevel()>= aLevelClass.level){
-                beanClassMapper.put(aLevelClass.getAClass(),aLevelClass);
-                aLevelClass.setId(bean.getBeanMetaData().getId());
+        for (LevelClass aClass : allLevelClass) {
+            LevelClass levelClass = beanClassMapper.get(aClass.getAClass());
+            if (levelClass!=null&&levelClass.getLevel()<aClass.getLevel()){
+                continue;
             }
-        });
+            beanClassMapper.put(aClass.getAClass(),aClass);
+            aClass.setId(bean.getBeanMetaData().getId());
+
+        }
         //将自身放入
         beanClassMapper.put(bean.getBeanMetaData().getAClass(),new LevelClass(0,bean.getBeanMetaData().getId(),bean.getBeanMetaData().getAClass()));
     }
@@ -50,7 +64,7 @@ public class CoreApplicationContext implements ApplicationContext{
         List<LevelClass> list = new LinkedList<>();
         //获取父类
         Class<?> superclass = aClass.getSuperclass();
-        if (superclass!=Object.class){
+        if (superclass!=Object.class&&superclass!=null){
             list.add(new LevelClass(level+1,superclass));
         }
         Class<?>[] interfaces = aClass.getInterfaces();
@@ -61,7 +75,7 @@ public class CoreApplicationContext implements ApplicationContext{
         for (Class<?> anInterface : interfaces) {
             list.addAll(getAllLevelClass(anInterface,level+1));
         }
-        if (superclass!= Object.class){
+        if (superclass!= Object.class&&superclass!=null){
             list.addAll(getAllLevelClass(superclass,level+1));
         }
         return list;
