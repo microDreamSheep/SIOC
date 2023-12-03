@@ -5,9 +5,10 @@ import live.midreamsheep.frame.sioc.scan.clazz.method.MethodInter;
 import lombok.Data;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 
 @Data
-public class ConstructorMethodInfo implements MethodInter {
+public class ConstructorMethodInfo implements MethodInter<Constructor<?>> {
     private Constructor<?> constructor;
     private AnnotationInfo annotationInfo;
     private String methodName;
@@ -25,4 +26,8 @@ public class ConstructorMethodInfo implements MethodInter {
         annotationInfo.init(constructor.getAnnotations());
     }
 
+    @Override
+    public Constructor<?> getMethod() {
+        return constructor;
+    }
 }

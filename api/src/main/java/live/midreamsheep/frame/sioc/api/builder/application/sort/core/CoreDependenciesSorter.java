@@ -40,11 +40,11 @@ public class CoreDependenciesSorter implements DependenciesSorter {
                     isOk= true;
                 }
                 pointer++;
-                if(!isOk){
-                    throw new RuntimeException("依赖关系不满足");
-                }
-                isOk = false;
             }
+            if(!isOk){
+                throw new RuntimeException("依赖关系不满足");
+            }
+            isOk = false;
         }
         //将decorate加入到result中
         result.addAll(decorate);

@@ -63,7 +63,7 @@ public class CoreBeanProcessor implements HandlerProcessor {
     }
 
     private String getBeanName(String name,Class<?> aClass){
-        if (name.isEmpty()){
+        if (!name.isEmpty()){
             return name;
         }
         //如果name为空，就使用类名首字母小写

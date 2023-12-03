@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @SIocFlag
 //目标：字段 构造方法参数
-@Target({ElementType.FIELD, ElementType.PARAMETER})
+@Target({ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.PARAMETER})
 public @interface Injector {
     String value() default "";
 }

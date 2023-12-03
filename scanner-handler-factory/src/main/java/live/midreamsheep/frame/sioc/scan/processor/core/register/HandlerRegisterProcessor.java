@@ -16,6 +16,9 @@ public class HandlerRegisterProcessor implements HandlerProcessor {
     @Override
     public void process(ClassMetaDefinition classMetaDefinition, List<ContextHandler> contextHandlerList) {
         //将其加入到上下文处理器中
+        if (classMetaDefinition.getAnnotationInfo().getAnnotation(HandlerRegister.class) == null){
+            return;
+        }
         for (Class<?> aClass : classMetaDefinition.getAnnotationInfo().getAnnotation(HandlerRegister.class).value()) {
             try {
                 ProcessorManager.addProcessor(aClass,(HandlerProcessor) classMetaDefinition.getOwnClass().getDeclaredConstructor().newInstance());

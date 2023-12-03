@@ -2,8 +2,7 @@ package live.midreamsheep.frame.sioc.scan.clazz.method;
 
 import live.midreamsheep.frame.sioc.scan.clazz.annotation.AnnotationInfo;
 
-
-public interface MethodInter {
+public interface MethodInter<T> {
 
     String getMethodName();
     Class<?> getReturnType();
@@ -11,4 +10,6 @@ public interface MethodInter {
     Class<?>[] getExceptionTypes();
 
     AnnotationInfo getAnnotationInfo();
+
+    T getMethod();
 }

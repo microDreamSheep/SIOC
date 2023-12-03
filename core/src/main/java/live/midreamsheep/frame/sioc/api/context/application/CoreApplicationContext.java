@@ -1,6 +1,10 @@
 package live.midreamsheep.frame.sioc.api.context.application;
 
+import cn.hutool.core.lang.Snowflake;
+import cn.hutool.core.lang.generator.SnowflakeGenerator;
 import live.midreamsheep.frame.sioc.api.bean.Bean;
+import live.midreamsheep.frame.sioc.api.bean.CoreBean;
+import live.midreamsheep.frame.sioc.api.bean.single.SingleBean;
 import live.midreamsheep.frame.sioc.api.context.factory.BeanFactory;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,8 +17,8 @@ import java.util.*;
 @SuppressWarnings("unchecked")
 public class CoreApplicationContext implements ApplicationContext{
 
-    private int level;
-    private BeanFactory factory;
+    private final int level;
+    private final BeanFactory factory;
 
     private final Map<String,Long> beanNameMapper = new HashMap<>();
 
@@ -85,7 +89,12 @@ public class CoreApplicationContext implements ApplicationContext{
 
     @Override
     public void registerBean(String name, Object object) {
-
+        Bean.BeanMetaData beanMetaData = new Bean.BeanMetaData();
+        beanMetaData.setAClass(object.getClass());
+        beanMetaData.setId(new Snowflake(1,1).nextId());
+        beanMetaData.setName(name);
+        SingleBean singleBean = new SingleBean(new CoreBean(object, beanMetaData));
+        registerBean(name,singleBean);
     }
 
     @Override
