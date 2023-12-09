@@ -12,9 +12,15 @@ public interface Bean {
      * */
     BeanMetaData getBeanMetaData();
     /**
-     * 获取bean内部的Object
+     * 获取bean对应的Object
      * */
     Object getObject();
+    /**
+     * 获取源bean
+     * 默认返回{@link #getObject()}
+     * 对于代理模式则需特别返回被代理对象
+     * */
+    Object getSourceObject();
     /**
      * Bean的元属性
      * */

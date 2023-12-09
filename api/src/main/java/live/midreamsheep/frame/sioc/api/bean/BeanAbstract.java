@@ -11,4 +11,9 @@ public abstract class BeanAbstract implements Bean{
 
     @Override
     public abstract Object getObject();
+
+    @Override
+    public Object getSourceObject() {
+        return getObject();
+    }
 }
