@@ -1,4 +1,4 @@
-package live.midreamsheep.frame.sioc.core.bean.protect;
+package live.midreamsheep.frame.sioc.core.bean.proto;
 
 import live.midreamsheep.frame.sioc.api.bean.Bean;
 import live.midreamsheep.frame.sioc.api.bean.DecorateBeanAbstract;
