@@ -109,12 +109,29 @@ public class CoreApplicationContext implements ApplicationContext {
 
     @Override
     public void unregisterBeanByName(String name) {
-
+        Long id = beanNameMapper.get(name);
+        Bean bean = factory.getBean(id);
+        Class<?> aClass = bean.getBeanMetaData().getAClass();
+        getAllLevelClass(aClass,0).forEach(levelClass -> {
+            if (levelClass.getId()==id){
+                beanClassMapper.remove(levelClass.getAClass());
+            }
+        });
+        factory.removeBean(id);
+        beanNameMapper.remove(name);
     }
 
     @Override
     public void unregisterBeanByClass(Class<?> clazz) {
-
+        LevelClass levelClass = beanClassMapper.get(clazz);
+        Class<?> aClass = factory.getBean(levelClass.getId()).getBeanMetaData().getAClass();
+        getAllLevelClass(aClass,0).forEach(levelClass1 -> {
+            if (levelClass1.getId()==levelClass.getId()){
+                beanClassMapper.remove(levelClass1.getAClass());
+            }
+        });
+        factory.removeBean(levelClass.getId());
+        beanClassMapper.remove(clazz);
     }
 
     @Data

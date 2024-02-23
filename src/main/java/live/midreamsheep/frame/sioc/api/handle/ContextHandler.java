@@ -5,7 +5,6 @@ import live.midreamsheep.frame.sioc.api.context.application.ApplicationContext;
 /**
  * 上下文处理器，用于对上下文中的bean进行处理
  * 例如生成bean放入容器中
- * @see live.midreamsheep.frame.sioc.api.annotation.meta.HandlerFlag
  * @see live.midreamsheep.frame.sioc.api.builder.injector.BeanHandlerInjector
  * @see live.midreamsheep.frame.sioc.api.builder.bean.BeanHandlerFactory
  * @author midreamsheep

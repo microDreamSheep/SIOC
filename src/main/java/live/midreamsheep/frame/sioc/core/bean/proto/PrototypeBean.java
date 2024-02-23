@@ -23,4 +23,12 @@ public class PrototypeBean extends DecorateBeanAbstract {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * 除有特殊需求外，一般返回{@link #getInstance()}
+     */
+    @Override
+    public Object getSourceObject() {
+        return bean.getSourceObject();
+    }
 }
